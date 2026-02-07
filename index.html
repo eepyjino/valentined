@@ -40,7 +40,7 @@
     border-radius: 10px;
     cursor: pointer;
     position: relative;
-    transition: transform 0.15s ease-in-out; /* FAST GROW */
+    transition: transform 0.15s ease-in-out;
   }
 
   #yes-btn {
@@ -68,7 +68,6 @@
     position: absolute;
     width: 10px;
     height: 10px;
-    background-color: #ff3366;
     top: 0;
     z-index: 5;
     opacity: 0.8;
@@ -109,12 +108,18 @@ const noMessages = [
 ];
 
 let noClickCount = 0;
-let yesScale = 1; // SCALE CONTROL
+let yesScale = 1;
 
-// YES button
+// YES button ✅ FIX APPLIED HERE
 yesBtn.addEventListener('click', () => {
   alert(`AYAYAYAYAYAYA ${name}, LEZGOO!`);
+
+  // REMOVE the image shown after pressing NO
+  valentineImg.style.display = 'none';
+
+  // SHOW the gif instead
   celebrationGif.style.display = 'block';
+
   launchConfetti();
 });
 
@@ -125,7 +130,6 @@ noBtn.addEventListener('click', () => {
 
   valentineImg.src = "images/shiela.jpg";
 
-  // MAKE YES BUTTON GROW FAST
   yesScale += 0.4;
   yesBtn.style.transform = `scale(${yesScale})`;
 });
@@ -141,11 +145,10 @@ function launchConfetti() {
 
     const fallDuration = Math.random() * 3 + 2;
     confetti.animate([
-      { transform: `translateY(0px) rotate(0deg)` },
-      { transform: `translateY(${window.innerHeight + 50}px) rotate(${Math.random()*360}deg)` }
+      { transform: 'translateY(0) rotate(0deg)' },
+      { transform: `translateY(${window.innerHeight + 50}px) rotate(${Math.random() * 360}deg)` }
     ], {
       duration: fallDuration * 1000,
-      iterations: 1,
       easing: 'linear'
     });
 
@@ -156,4 +159,5 @@ function launchConfetti() {
 
 </body>
 </html>
+
 
