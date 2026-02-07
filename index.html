@@ -39,29 +39,23 @@
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    position: relative;
     transition: transform 0.15s ease-in-out;
   }
 
   #yes-btn {
     background-color: #ff6699;
     color: white;
-    z-index: 2;
   }
 
   #no-btn {
     background-color: #ffccdd;
     color: #ff3366;
-    z-index: 1;
   }
 
   #celebration-gif {
     display: none;
     width: 300px;
-    margin-top: 20px;
     border-radius: 20px;
-    z-index: 10;
-    position: relative;
   }
 
   .confetti {
@@ -82,7 +76,7 @@
 
 <img id="valentine-img" src="images/shieee.jpg" alt="Valentine">
 
-<div>
+<div id="buttons">
   <button id="yes-btn" class="btn">Yes</button>
   <button id="no-btn" class="btn">No</button>
 </div>
@@ -94,6 +88,7 @@ const heading = document.getElementById('heading');
 const valentineImg = document.getElementById('valentine-img');
 const yesBtn = document.getElementById('yes-btn');
 const noBtn = document.getElementById('no-btn');
+const buttons = document.getElementById('buttons');
 const celebrationGif = document.getElementById('celebration-gif');
 
 const name = "Shiee";
@@ -110,14 +105,16 @@ const noMessages = [
 let noClickCount = 0;
 let yesScale = 1;
 
-// YES button ✅ FIX APPLIED HERE
+// YES button — FINAL STATE
 yesBtn.addEventListener('click', () => {
   alert(`AYAYAYAYAYAYA ${name}, LEZGOO!`);
 
-  // REMOVE the image shown after pressing NO
-  valentineImg.style.display = 'none';
+  // REMOVE everything else
+  heading.remove();
+  valentineImg.remove();
+  buttons.remove();
 
-  // SHOW the gif instead
+  // CENTER the GIF
   celebrationGif.style.display = 'block';
 
   launchConfetti();
@@ -159,5 +156,3 @@ function launchConfetti() {
 
 </body>
 </html>
-
-
