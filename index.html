@@ -56,6 +56,7 @@
     display: none;
     width: 300px;
     border-radius: 20px;
+    margin-bottom: 20px;
   }
 
   .confetti {
@@ -105,7 +106,7 @@ const noMessages = [
 let noClickCount = 0;
 let yesScale = 1;
 
-// YES button — FINAL STATE
+// YES button — FINAL STATE WITH TEXT
 yesBtn.addEventListener('click', () => {
   alert(`AYAYAYAYAYAYA ${name}, LEZGOO!`);
 
@@ -114,8 +115,15 @@ yesBtn.addEventListener('click', () => {
   valentineImg.remove();
   buttons.remove();
 
-  // CENTER the GIF
+  // SHOW GIF
   celebrationGif.style.display = 'block';
+
+  // ADD new text
+  const newText = document.createElement('h1');
+  newText.textContent = "Knew you would say yes";
+  newText.style.color = "#ff3366";
+  newText.style.marginTop = "20px";
+  document.body.appendChild(newText);
 
   launchConfetti();
 });
@@ -156,3 +164,4 @@ function launchConfetti() {
 
 </body>
 </html>
+
