@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>bai bai bai iopen ko</title>
+<title>Will You Be My Valentine, Shieeee?</title>
 <style>
   body {
     display: flex;
@@ -14,7 +14,7 @@
     background-color: #ffe6f0;
     font-family: Arial, sans-serif;
     text-align: center;
-    overflow: hidden; /* needed for confetti */
+    overflow: hidden;
     position: relative;
   }
 
@@ -63,7 +63,6 @@
     position: relative;
   }
 
-  /* Confetti container */
   .confetti {
     position: absolute;
     width: 10px;
@@ -82,12 +81,12 @@
 <img id="valentine-img" src="images/shieee.jpg" alt="Valentine">
 
 <div>
-  <button id="yes-btn" class="btn">Yes </button>
+  <button id="yes-btn" class="btn">Yes</button>
   <button id="no-btn" class="btn">No</button>
 </div>
 
 <!-- Celebration GIF -->
-<img id="celebration-gif" src="https://i.postimg.cc/65rxFbYb/sds.gif" alt="Celebration">
+<img id="celebration-gif" src="images/sds.gif" alt="Celebration">
 
 <script>
 const heading = document.getElementById('heading');
@@ -101,12 +100,11 @@ heading.textContent = `${name}, will you be my Valentine?`;
 
 // NO button messages
 const noMessages = [
-  "SEGE NE BA",
-  "Ihh",
-  "magmaoy ko ron sigee ka",
-  "plsplspls",
-  "higda ko ron sa dalan"
-  "sure na kaha na"
+  "SEGEY NE BA",
+  "ihhh",
+  "PLSPLSPLS",
+  "mag maoy ko ron",
+  "wala ka maluoy nako"
 ];
 let noClickCount = 0;
 
@@ -119,19 +117,18 @@ yesBtn.addEventListener('click', () => {
 
 // NO button
 noBtn.addEventListener('click', () => {
-  // Change heading text (cycles through noMessages)
+  // Change heading text
   heading.textContent = noMessages[noClickCount % noMessages.length];
   noClickCount++;
 
-  // Make YES button bigger to cover NO
+  // Change image to repo NO image
+  valentineImg.src = "images/shiela.jpg";
+
+  // Make YES button bigger to block NO
   const currentWidth = yesBtn.offsetWidth;
   const currentHeight = yesBtn.offsetHeight;
-
   yesBtn.style.width = currentWidth + 20 + 'px';
   yesBtn.style.height = currentHeight + 10 + 'px';
-
-  // Optional: Move YES button slightly over NO
-  yesBtn.style.position = 'relative';
   yesBtn.style.zIndex = 2;
 });
 
@@ -144,7 +141,7 @@ function launchConfetti() {
     confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
     document.body.appendChild(confetti);
 
-    const fallDuration = Math.random() * 3 + 2; // 2-5s
+    const fallDuration = Math.random() * 3 + 2;
     confetti.animate([
       { transform: `translateY(0px) rotate(0deg)` },
       { transform: `translateY(${window.innerHeight + 50}px) rotate(${Math.random()*360}deg)` }
@@ -161,6 +158,4 @@ function launchConfetti() {
 
 </body>
 </html>
-
-
 
