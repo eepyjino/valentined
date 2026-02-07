@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>baibaibai iopen gud ko</title>
+
 <style>
   body {
     display: flex;
@@ -38,20 +39,20 @@
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    transition: all 0.3s ease;
     position: relative;
+    transition: transform 0.15s ease-in-out; /* FAST GROW */
   }
 
   #yes-btn {
     background-color: #ff6699;
     color: white;
+    z-index: 2;
   }
 
   #no-btn {
     background-color: #ffccdd;
     color: #ff3366;
     z-index: 1;
-    position: relative;
   }
 
   #celebration-gif {
@@ -75,9 +76,11 @@
   }
 </style>
 </head>
+
 <body>
 
 <h1 id="heading"></h1>
+
 <img id="valentine-img" src="images/shieee.jpg" alt="Valentine">
 
 <div>
@@ -85,7 +88,6 @@
   <button id="no-btn" class="btn">No</button>
 </div>
 
-<!-- Celebration GIF -->
 <img id="celebration-gif" src="images/sds.gif" alt="Celebration">
 
 <script>
@@ -98,23 +100,16 @@ const celebrationGif = document.getElementById('celebration-gif');
 const name = "Shiee";
 heading.textContent = `${name}, will you be my Valentine?`;
 
-// NO button messages
 const noMessages = [
   "SEGEY NE BA",
   "ihhh",
   "PLSPLSPLS",
   "mag maoy ko ron",
-  "wala ka maluoy nako"
-  "sure na  na?"
-  "sure na  na?"
-  "sure na  na?"
-  "sure na  na?"
-  "sure na  na?"
-  "sure na  na?"
-  "sure na  na?"
-  "sure na  na?"
+  "sure na jud na?"
 ];
+
 let noClickCount = 0;
+let yesScale = 1; // SCALE CONTROL
 
 // YES button
 yesBtn.addEventListener('click', () => {
@@ -125,22 +120,17 @@ yesBtn.addEventListener('click', () => {
 
 // NO button
 noBtn.addEventListener('click', () => {
-  // Change heading text
   heading.textContent = noMessages[noClickCount % noMessages.length];
   noClickCount++;
 
-  // Change image to repo NO image
   valentineImg.src = "images/shiela.jpg";
 
-  // Make YES button bigger to block NO
-  const currentWidth = yesBtn.offsetWidth;
-  const currentHeight = yesBtn.offsetHeight;
-  yesBtn.style.width = currentWidth + 20 + 'px';
-  yesBtn.style.height = currentHeight + 10 + 'px';
-  yesBtn.style.zIndex = 2;
+  // MAKE YES BUTTON GROW FAST
+  yesScale += 0.4;
+  yesBtn.style.transform = `scale(${yesScale})`;
 });
 
-// Confetti effect
+// CONFETTI
 function launchConfetti() {
   for (let i = 0; i < 100; i++) {
     const confetti = document.createElement('div');
@@ -166,6 +156,4 @@ function launchConfetti() {
 
 </body>
 </html>
-
-
 
